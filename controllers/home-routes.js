@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
     })
       .then(dbPostData => {
         // pass a single post object into the homepage template
-        console.log(dbPostData);
+        // console.log(dbPostData);
         const posts = dbPostData.map(post => post.get({ plain: true }));
         res.render('homepage', { posts });
       })
@@ -37,5 +37,10 @@ router.get('/', (req, res) => {
         res.status(500).json(err);
       });
 });
+
+router.get('/login', (req, res) => {
+  res.render('login');  //login doesnt need a any variables so we dont need to pass 2nd argument
+});
+
 
 module.exports = router;
